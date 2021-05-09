@@ -24,7 +24,7 @@ class ClienteFactory extends Factory
         return [
             'dni' => $this->faker->unique()->numberBetween(10000000, 99999999),
             'pasaporte' => $this->faker->unique()->numberBetween(10000000, 99999999),
-            'nombre' => $this->faker->name,
+            'nombre' => $this->faker->name(),
             'apellido' => $this->faker->lastname(),
             'email' => $this->faker->unique()->safeEmail(),
             'telefono' => $this->faker->numberBetween(1000000000, 9999999999),
