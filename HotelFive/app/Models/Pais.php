@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Habitacion extends Model
+class Pais extends Model
 {
     use HasFactory;
-    protected $table = "habitaciones";
+    protected $table = "paises";
 
-    public function reservas()
+    public function personas()
     {
-        return $this->hasMany('App\Models\Reserva');
+        return $this->hasMany('App\Models\Persona');
     }
 }

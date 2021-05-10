@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Carbon\Carbon;
-use App\Models\Cliente;
+use App\Models\Persona;
 use App\Models\Reserva;
 use App\Models\Habitacion;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -25,11 +25,13 @@ class ReservaFactory extends Factory
     public function definition()
     {
         return [
-            'fecha_entrada' => Carbon::now(),
+            'fecha_ingreso' => Carbon::now(),
             'fecha_salida' => Carbon::now()->addDays(5),//sumar dias
-            'cliente_id' => Cliente::factory(),
+            'cliente_id' => Persona::factory(),
             'habitacion_id' => Habitacion::factory(),
-            'nro_personas' => 3,//if $this->habitacion_id === 1
+            'cant_huespedes' => 3,//if $this->habitacion_id === 1
+            'total' => 3000,
+            //'nro_tarjeta' => $this->faker->numberBetween(100000000000, 999999999999),
         ];
     }
 }
