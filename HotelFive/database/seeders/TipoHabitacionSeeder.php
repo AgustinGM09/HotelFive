@@ -16,17 +16,20 @@ class TipoHabitacionSeeder extends Seeder
     {
         TipoHabitacion::create([
             'nombre' => 'Individual',
-            'cantidad_camas' => 1
+            'cantidad_camas' => 1,
+            'precio' => 2000
         ]);
 
         TipoHabitacion::create([
             'nombre' => 'Doble',
-            'cantidad_camas' => 2
+            'cantidad_camas' => 2,
+            'precio' => 2500
         ]);
 
         TipoHabitacion::create([
             'nombre' => 'Triple',
-            'cantidad_camas' => 3
+            'cantidad_camas' => 3,
+            'precio' => 3000
         ]);
     }
 }

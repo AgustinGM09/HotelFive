@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Cliente;
+use App\Models\Pais;
+use App\Models\Persona;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ClienteFactory extends Factory
+class PersonaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Cliente::class;
+    protected $model = Persona::class;
 
     /**
      * Define the model's default state.
@@ -22,12 +23,13 @@ class ClienteFactory extends Factory
     public function definition()
     {
         return [
-            'dni' => $this->faker->unique()->numberBetween(10000000, 99999999),
-            'pasaporte' => $this->faker->unique()->numberBetween(10000000, 99999999),
             'nombre' => $this->faker->name(),
             'apellido' => $this->faker->lastname(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'dni' => $this->faker->unique()->numberBetween(10000000, 99999999),
             'telefono' => $this->faker->numberBetween(1000000000, 9999999999),
+            'email' => $this->faker->unique()->safeEmail(),
+            'pais_id' => Pais::factory(),
+            'tipo_persona' => 2,
         ];
     }
 }

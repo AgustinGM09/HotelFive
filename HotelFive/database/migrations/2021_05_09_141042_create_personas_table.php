@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiposHabitacionTable extends Migration
+class CreatePersonasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateTiposHabitacionTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipos_habitacion', function (Blueprint $table) {
+        Schema::create('personas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->unsignedTinyInteger('cantidad_camas');
-            $table->float('precio');
+            $table->string('apellido');
+            $table->unsignedBigInteger('dni')->unique();
+            $table->string('telefono');
+            $table->string('email')->unique();
+            $table->foreignId('pais_id')->constrained('paises');
+            $table->foreignId('tipo_persona')->constrained('tipo_personas');
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ class CreateTiposHabitacionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipos_habitacion');
+        Schema::dropIfExists('personas');
     }
 }

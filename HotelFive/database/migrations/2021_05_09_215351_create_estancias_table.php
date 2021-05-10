@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiposHabitacionTable extends Migration
+class CreateEstanciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTiposHabitacionTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipos_habitacion', function (Blueprint $table) {
+        Schema::create('estancias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
-            $table->unsignedTinyInteger('cantidad_camas');
-            $table->float('precio');
+            $table->foreignId('recepcionista_id')->constrained('users');
+            $table->foreignId('reserva_id')->constrained('reservas');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateTiposHabitacionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipos_habitacion');
+        Schema::dropIfExists('estancias');
     }
 }
